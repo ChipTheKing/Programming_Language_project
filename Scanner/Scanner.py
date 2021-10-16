@@ -1,4 +1,50 @@
 from collections.abc import Iterable
+from Token_dictionary import Tokens
+from keyword_dictionary import Keywords
+
+
+def is_char(file_data):
+    for x in range(65, 122, 1):
+        if file_data == chr(x):
+            return True
+    return False
+
+
+def is_int(file_data):
+    for x in range(48, 57):
+        if file_data == chr(x):
+            return True
+    return False
+
+
+def is_token(file_data):
+    if is_int(file_data):
+        return True
+    elif is_char(file_data):
+        return True
+    elif file_data in Tokens:
+        return True
+    else:
+        return False
+
+
+def set_token(file_data):
+    if is_token(file_data):
+        if is_int(file_data):
+            return Tokens["int"]
+        elif is_char(file_data):
+            return Tokens["char"]
+        else:
+            return Tokens[file_data]
+    else:
+        return
+
+
+def is_keyword(file_data):
+    if file_data in Keywords:
+        return True
+    else:
+        return False
 
 
 #
@@ -54,15 +100,26 @@ def read_lines(file_name):
     file = open(file_name, 'r')
     lines = file.readlines()
     outside_spaces = remove_spaces(lines)
-    print(outside_spaces)
+    return outside_spaces
 
 
 def main():
     filepath = '/Users/clyons/Documents/GitHub/Programming_Language_project/4308-Project-Fall-2021/Julia-Files/'
     # filename = input("Enter the name of the file: ")
-    filename = 'Test2.jl'
+    filename = 'Test3.jl'
 
-    read_lines(filepath+filename)
+    file_data = read_lines(filepath+filename)
+
+    print("Lexeme", "                   ", "Tokens")
+    print("---------------------------------------")
+
+    for x in file_data:
+        if is_keyword(x):
+            print(x, "                 ", Keywords[x])
+        elif is_token(x):
+            print(x, "                 ", set_token(x))
+        else:
+            print("Error, unable to calculate at ", x)
 
 
 main()
