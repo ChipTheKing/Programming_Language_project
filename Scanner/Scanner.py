@@ -1,3 +1,11 @@
+
+# Class:       CS 4308 Section 02
+# Term:        Fall 2021
+# Name:       Christopher Lyons
+# Instructor:   Sharon Perry
+# Project:     Deliverable 1 Scanner
+
+
 # import statements for program
 from collections.abc import Iterable
 from Token_dictionary import Tokens  # imports Token dictionary from the token_dictionary.py file
@@ -102,16 +110,16 @@ def remove_spaces(lines):
         if '()' in y:
             # stores the index value for the location in the initial list
             index.append(count)
-            value = y[:(len(y)-2)]  # stores all the characters up to () into a value
+            value = y[:(len(y ) -2)]  # stores all the characters up to () into a value
             fixed[count] = [value, '(', ')']  # replaces the initial value at the index with the new value and ().
 
         # if the () have a value inside then it separates them all
         elif '(' in y:
             # stores the index value for the location in the initial list
             index.append(count)
-            value = y[:(len(y)-3)]  # stores values before () into a value
+            value = y[:(len(y ) -3)]  # stores values before () into a value
             # stores the value with the separated parenthesis back into list at its former location
-            fixed[count] = [value, '(', y[(len(y)-2)], ')']
+            fixed[count] = [value, '(', y[(len(y ) -2)], ')']
 
         # edge case for if a value has a < attached to it. Separates it and stores it back into the list
         elif '<' in y and len(y) > 1:
@@ -135,13 +143,13 @@ def read_lines(file_name):
 
 def main():
     # sets the file past for the file
-    filepath = '/Users/clyons/Documents/GitHub/Programming_Language_project/4308-Project-Fall-2021/Julia-Files/'
-    filename = 'Test2.jl'
+    filepath = "C:\Dev\Programming_Language_project\\4308-Project-Fall-2021\Julia-Files\\"
+    filename = 'Test1.jl'
     # optional input for user to do a file name selection
     # filename = input("Enter the name of the file: ")
 
     # sets file data list to the output from the function call with the given file
-    file_data = read_lines(filepath+filename)
+    file_data = read_lines(filepath +filename)
 
     # prints the outputs in correct formatting
     print("Lexeme\t\t\t\t\tTokens")
