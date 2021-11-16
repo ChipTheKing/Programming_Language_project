@@ -1,4 +1,3 @@
-
 # Class:       CS 4308 Section 02
 # Term:        Fall 2021
 # Name:       Christopher Lyons
@@ -110,16 +109,16 @@ def remove_spaces(lines):
         if '()' in y:
             # stores the index value for the location in the initial list
             index.append(count)
-            value = y[:(len(y ) -2)]  # stores all the characters up to () into a value
+            value = y[:(len(y) - 2)]  # stores all the characters up to () into a value
             fixed[count] = [value, '(', ')']  # replaces the initial value at the index with the new value and ().
 
         # if the () have a value inside then it separates them all
         elif '(' in y:
             # stores the index value for the location in the initial list
             index.append(count)
-            value = y[:(len(y ) -3)]  # stores values before () into a value
+            value = y[:(len(y) - 3)]  # stores values before () into a value
             # stores the value with the separated parenthesis back into list at its former location
-            fixed[count] = [value, '(', y[(len(y ) -2)], ')']
+            fixed[count] = [value, '(', y[(len(y) - 2)], ')']
 
         # edge case for if a value has a < attached to it. Separates it and stores it back into the list
         elif '<' in y and len(y) > 1:
@@ -149,7 +148,7 @@ def main():
     # filename = input("Enter the name of the file: ")
 
     # sets file data list to the output from the function call with the given file
-    file_data = read_lines(filepath +filename)
+    file_data = read_lines(filepath + filename)
 
     # prints the outputs in correct formatting
     print("Lexeme\t\t\t\t\tTokens")
